@@ -1,15 +1,16 @@
--- Linear Algrebra module
+-- Linear algrebra module
 -- Copyright (C) 2006 Marc A. Lepage
 
--- Imports
 local sqrt = math.sqrt
 
---------------------------------------------------------------------------------
+module(...)
+
+------------------
 -- Unary functions
---------------------------------------------------------------------------------
+------------------
 
 -- Negation
-local function neg(u, r)
+function neg(u, r)
   if r then
     r[1], r[2], r[3] = -u[1], -u[2], -u[3]
     return r
@@ -19,7 +20,7 @@ local function neg(u, r)
 end
 
 -- Normalization
-local function norm(u, r)
+function norm(u, r)
   local u1, u2, u3 = u[1], u[2], u[3]
   local a = sqrt(u1^2 + u2^2 + u3^2)
   if r then
@@ -30,17 +31,17 @@ local function norm(u, r)
   end
 end
 
---------------------------------------------------------------------------------
+-------------------
 -- Binary functions
---------------------------------------------------------------------------------
+-------------------
 
 -- Dot product
-local function dot(u, v)
+function dot(u, v)
   return u[1]*v[1] + u[2]*v[2] + u[3]*v[3];
 end
 
 -- Vector addition
-local function add(u, v, r)
+function add(u, v, r)
   if r then
     r[1], r[2], r[3] = u[1]+v[1], u[2]+v[2], u[3]+v[3]
     return r
@@ -50,7 +51,7 @@ local function add(u, v, r)
 end
 
 -- Vector subtraction
-local function sub(u, v, r)
+function sub(u, v, r)
   if r then
     r[1], r[2], r[3] = u[1]-v[1], u[2]-v[2], u[3]-v[3]
     return r
@@ -60,7 +61,7 @@ local function sub(u, v, r)
 end
 
 -- Cross product (right-handed)
-local function cross(u, v, r)
+function cross(u, v, r)
   local u1, u2, u3 = u[1], u[2], u[3]
   local v1, v2, v3 = v[1], v[2], v[3]
   if r then
@@ -72,7 +73,7 @@ local function cross(u, v, r)
 end
 
 -- Scalar multiplication
-local function mul(u, a, r)
+function mul(u, a, r)
   if r then
     r[1], r[2], r[3] = u[1]*a, u[2]*a, u[3]*a
     return r
@@ -82,7 +83,7 @@ local function mul(u, a, r)
 end
 
 -- Scalar division
-local function div(u, a, r)
+function div(u, a, r)
   if r then
     r[1], r[2], r[3] = u[1]/a, u[2]/a, u[3]/a
     return r
@@ -90,21 +91,3 @@ local function div(u, a, r)
     return { u[1]/a, u[2]/a, u[3]/a }
   end
 end
-
---------------------------------------------------------------------------------
--- Exports
---------------------------------------------------------------------------------
-
-la =
-{
-  neg = neg,
-  norm = norm,
-  dot = dot,
-  add = add,
-  sub = sub,
-  cross = cross,
-  mul = mul,
-  div = div,
-}
-
-return la
