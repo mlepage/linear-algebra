@@ -1,5 +1,5 @@
 -- Linear algrebra module
--- Copyright (C) 2006 Marc A. Lepage
+-- Copyright (C) 2006 Marc Lepage
 
 local sqrt = math.sqrt
 

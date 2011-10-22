@@ -1,0 +1,46 @@
+Linear algrebra module
+by Marc Lepage
+
+
+OVERVIEW
+
+The linear algebra module can perform common operations on three dimensional
+vectors. It's useful when using LuaGL (OpenGL).
+
+
+USAGE
+
+-- import module
+require "la"
+
+-- create a few vectors (any table with numbers at indexes [1] [2] [3])
+u, v = {1,0,0}, {0,1,0}
+
+-- compute u + v
+r = la.add(u, v) -- results are new vectors (convenience)
+la.add(u, v, r)  -- unless a result vector is specified (better performance)
+la.add(u, v, u)  -- which can safely be one of the operands (u += v)
+
+-- compute u - v (so u is again {1,0,0})
+la.sub(u, v, u)
+
+-- dot product is projection (result is 0 since u and v are orthogonal)
+la.dot(u, v)
+
+-- cross product is right handed (result is {0,0,1})
+la.cross(u, v)
+
+-- negate and normalize (result is approx {-0.707,-0.707,0})
+la.neg(la.norm({1,1,0}))
+
+-- scalar multiplication (2*u) and division (v/3)
+la.mul(u, 2)
+la.div(v, 3)
+
+
+RESOURCES
+
+http://en.wikipedia.org/wiki/Linear_algebra
+http://en.wikipedia.org/wiki/Euclidean_vector
+http://en.wikipedia.org/wiki/Dot_product
+http://en.wikipedia.org/wiki/Cross_product
